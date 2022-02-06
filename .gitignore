@@ -1,0 +1,6 @@
+*.exe
+*.txt
+*.o
+/cmake-build-debug
+*.xml
+*.iml
