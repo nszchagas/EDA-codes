@@ -80,27 +80,31 @@ public:
 int main() {
 
   int n;
-  
+
   printf("Quantos numeros serão digitados?\n");
   scanf("%d", &n);
 
   Vetor<int> *vetor = new Vetor<int>(n);
-  
+
   printf("Digite os %d numeros separados pela tecla ENTER\n", n);
 
-  for (int i = 0; i < n ; i ++ )
-  {
+  for (int i = 0; i < n; i++) {
     int valor;
     scanf("%d", &valor);
     vetor->insert(valor);
   }
 
   float somaSerie = 0;
+  int qtdDenominadorMaior = 0;
 
-  for (int i = 0; i < n; i++){
-    printf("Vetor[%d] = %d ", i, vetor->vetor[i]);
-    somaSerie += (i+1) / vetor->vetor[i]; //@TODO: ARRUMAR 
+  for (int i = 0; i < n; i++) {
+    somaSerie += (float) (i + 1) / vetor->vetor[i]; //@TODO: ARRUMAR
+    if ((i + 1) < vetor->vetor[i]) {
+      qtdDenominadorMaior += 1;
+    }
   }
   vetor->print();
-  printf("%f", somaSerie);
+  printf("A soma é: %f\n", somaSerie);
+  printf("%d termos da série têm o denominador maior que o numerador.",
+         qtdDenominadorMaior);
 }
